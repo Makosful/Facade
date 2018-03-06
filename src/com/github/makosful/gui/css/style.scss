@@ -1,0 +1,21 @@
+$background: #21252B;
+$button: #56B6B4;
+$textColor: #F3F3F3;
+
+.root {
+    -fx-background-color: $background;
+}
+
+.list-view {
+    -fx-text-fill: $textColor;
+    -fx-background-color: lighten($background, 15%);
+}
+
+.button {
+    -fx-text-fill: $textColor;
+    -fx-background-color: darken($button, 15%);
+}
+
+.text-field {
+    -fx-background-color: darken($textColor, 20%);
+}
