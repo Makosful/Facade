@@ -29,6 +29,8 @@ public class LogController implements Initializable
     private Button btnDelete;
     @FXML
     private Button btnDeleteAll;
+    @FXML
+    private Button btnUndo;
 
     /**
      * Initializes the controller class.

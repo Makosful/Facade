@@ -1,6 +1,8 @@
 $background: #21252B;
-$button: #56B6B4;
+$button: #007399;
 $textColor: #F3F3F3;
+$dangerButton: #E81123;
+$goodButton: #74882b;
 
 .root {
     -fx-background-color: $background;
@@ -13,8 +15,35 @@ $textColor: #F3F3F3;
 
 .button {
     -fx-text-fill: $textColor;
-    -fx-background-color: darken($button, 15%);
+    -fx-background-color: $button;
+    &:hover {
+        -fx-background-color: lighten($button, 10%);
+    }
+    &:pressed {
+        -fx-background-color: darken($button, 10%);
+    }
 }
+
+.danger {
+    -fx-background-color: $dangerButton;
+    &:hover {
+        -fx-background-color: lighten($dangerButton, 10%);
+    }
+    &:pressed {
+        -fx-background-color: darken($dangerButton, 10%);
+    }
+}
+
+.good {
+    -fx-background-color: $goodButton;
+    &:hover {
+        -fx-background-color: lighten($goodButton, 10%);
+    }
+    &:pressed {
+        -fx-background-color: darken($goodButton, 10%);
+    }
+}
+
 
 .text-field {
     -fx-background-color: darken($textColor, 20%);

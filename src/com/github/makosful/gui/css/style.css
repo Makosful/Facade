@@ -7,7 +7,25 @@
 
 .button {
   -fx-text-fill: #F3F3F3;
-  -fx-background-color: #3a8684; }
+  -fx-background-color: #007399; }
+  .button:hover {
+    -fx-background-color: #0099cc; }
+  .button:pressed {
+    -fx-background-color: #004d66; }
+
+.danger {
+  -fx-background-color: #E81123; }
+  .danger:hover {
+    -fx-background-color: #f13b4b; }
+  .danger:pressed {
+    -fx-background-color: #b80e1c; }
+
+.good {
+  -fx-background-color: #74882b; }
+  .good:hover {
+    -fx-background-color: #95af37; }
+  .good:pressed {
+    -fx-background-color: #53611f; }
 
 .text-field {
   -fx-background-color: silver; }
