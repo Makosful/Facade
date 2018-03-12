@@ -32,6 +32,7 @@ public class Model {
 
     Stack undoStack = new Stack();
     Stack redoStack = new Stack();
+    Stack DeletedStack = new Stack();
 
     /**
      * Singleton Constructor
@@ -79,6 +80,8 @@ public class Model {
     }
 
     public void fxmlDeleteAll() {
+        DeletedStack.addAll(logList);
+
         logList.clear();
         saveMessages();
     }

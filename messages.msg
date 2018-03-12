@@ -1,10 +1,7 @@
-Another test
-My test
-Ny
-ass
-test
 123
-123
-malthe
-123
-Test
+321
+654
+654
+456
+hej
+dig

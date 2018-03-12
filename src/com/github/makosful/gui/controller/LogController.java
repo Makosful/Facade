@@ -3,13 +3,16 @@ package com.github.makosful.gui.controller;
 import com.github.makosful.gui.Model;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Stack;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -30,6 +33,8 @@ public class LogController implements Initializable {
     private Button btnDelete;
     @FXML
     private BorderPane bdpRoot;
+    @FXML
+    private Button btnDeleteAll;
 
     /**
      * Initializes the controller class.
@@ -42,6 +47,7 @@ public class LogController implements Initializable {
         model = Model.getInstance();
 
         lstLog.setItems(model.getLogList());
+        setupKeyCombinations();
     }
 
     @FXML
@@ -56,6 +62,7 @@ public class LogController implements Initializable {
         lstLog.getSelectionModel().select(-1);
     }
 
+    @FXML
     private void handleDeleteAll(ActionEvent event) {
         model.fxmlDeleteAll();
     }
@@ -72,6 +79,22 @@ public class LogController implements Initializable {
         System.out.println("Undo");
     }
 
+    private void setupKeyCombinations() {
+        bdpRoot.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode().equals(KeyCode.Z) && event.isControlDown()) // Ctrl + Z
+                {
+                    model.undoChange();
+                }
+                if (event.getCode().equals(KeyCode.Y) && event.isControlDown()) // Ctrl + Y
+                {
+                    model.redoChange();
+                }
+            }
+        });
+    }
+
     @FXML
     private void handleOpen(ActionEvent event) {
     }
@@ -82,5 +105,10 @@ public class LogController implements Initializable {
 
     @FXML
     private void handleClose(ActionEvent event) {
+    }
+
+    @FXML
+    private void sendMsg(ActionEvent event) {
+        handleSend(event);
     }
 }

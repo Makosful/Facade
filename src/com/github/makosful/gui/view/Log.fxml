@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane id="root" fx:id="bdpRoot" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
+<BorderPane id="root" fx:id="bdpRoot" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
    <center>
       <AnchorPane stylesheets="@../css/style.css">
           <padding>
@@ -26,26 +25,37 @@
                       <ListView fx:id="lstLog" VBox.vgrow="ALWAYS" />
                       <HBox spacing="20.0">
                           <children>
-                              <TextField fx:id="txtMessage" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="txtMessage" onAction="#sendMsg" HBox.hgrow="ALWAYS">
                                   <padding>
                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                   </padding>
                               </TextField>
-                              <Button fx:id="btnSend" mnemonicParsing="false" onAction="#handleSend" text="Send">
+                              <Button fx:id="btnSend" minWidth="84.0" mnemonicParsing="false" onAction="#handleSend" text="Send">
                                   <padding>
                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                   </padding>
                               </Button>
                           </children>
                       </HBox>
-                  <HBox alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER_RIGHT" spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
-                              <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleDelete" styleClass="danger" text="Delete">
+                              <Button fx:id="btnDelete" minWidth="84.0" mnemonicParsing="false" onAction="#handleDelete" prefWidth="84.0" styleClass="danger" text="Delete">
                                   <padding>
                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                   </padding>
                               </Button>
+                        <Button fx:id="btnDeleteAll" minWidth="84.0" mnemonicParsing="false" onAction="#handleDeleteAll" prefWidth="84.0" styleClass="danger" text="Delete All">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                   </children>
               </VBox>
