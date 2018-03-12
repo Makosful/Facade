@@ -5,7 +5,7 @@ $dangerButton: #E81123;
 $goodButton: #74882b;
 
 .root {
-    -fx-background-color: $background;
+    -fx-background-color: lighten($background, 10%);
 }
 
 .list-view {
@@ -47,4 +47,15 @@ $goodButton: #74882b;
 
 .text-field {
     -fx-background-color: darken($textColor, 20%);
+}
+
+.menu-bar{
+    -fx-background-color: lighten($background, 5%);
+    .context-menu {
+        -fx-background-color: lighten($background, 5%);
+    }
+}
+
+.menu .label{
+    -fx-text-fill: $textColor;
 }

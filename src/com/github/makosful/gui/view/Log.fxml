@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane id="root" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
+<BorderPane id="root" fx:id="bdpRoot" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
    <center>
       <AnchorPane stylesheets="@../css/style.css">
           <padding>

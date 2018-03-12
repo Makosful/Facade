@@ -1,5 +1,5 @@
 .root {
-  -fx-background-color: #21252B; }
+  -fx-background-color: #373e48; }
 
 .list-view {
   -fx-text-fill: #F3F3F3;
@@ -29,5 +29,13 @@
 
 .text-field {
   -fx-background-color: silver; }
+
+.menu-bar {
+  -fx-background-color: #2c3139; }
+  .menu-bar .context-menu {
+    -fx-background-color: #2c3139; }
+
+.menu .label {
+  -fx-text-fill: #F3F3F3; }
 
 /*# sourceMappingURL=style.css.map */
