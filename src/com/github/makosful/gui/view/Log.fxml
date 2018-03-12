@@ -3,61 +3,73 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="root" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-    <children>
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <ListView fx:id="lstLog" VBox.vgrow="ALWAYS" />
-                <HBox spacing="20.0">
-                    <children>
-                        <TextField fx:id="txtMessage" HBox.hgrow="ALWAYS">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </padding>
-                        </TextField>
-                        <Button fx:id="btnSend" mnemonicParsing="false" onAction="#handleSend" text="Send">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </padding>
-                        </Button>
-                    </children>
-                </HBox>
-            <HBox>
-               <children>
-                  <HBox HBox.hgrow="ALWAYS">
-                     <children>
-                              <Button fx:id="btnUndo" alignment="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleDelete" styleClass="good" text="Undo">
+
+<BorderPane id="root" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
+   <center>
+      <AnchorPane stylesheets="@../css/style.css">
+          <padding>
+              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+          </padding>
+          <children>
+              <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                      <ListView fx:id="lstLog" VBox.vgrow="ALWAYS" />
+                      <HBox spacing="20.0">
+                          <children>
+                              <TextField fx:id="txtMessage" HBox.hgrow="ALWAYS">
+                                  <padding>
+                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                  </padding>
+                              </TextField>
+                              <Button fx:id="btnSend" mnemonicParsing="false" onAction="#handleSend" text="Send">
                                   <padding>
                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                   </padding>
                               </Button>
-                     </children>
-                  </HBox>
-                  <HBox spacing="20.0">
+                          </children>
+                      </HBox>
+                  <HBox alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
                      <children>
                               <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleDelete" styleClass="danger" text="Delete">
                                   <padding>
                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                   </padding>
                               </Button>
-                              <Button fx:id="btnDeleteAll" mnemonicParsing="false" onAction="#handleDeleteAll" styleClass="danger" text="Delete All">
-                                  <padding>
-                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                  </padding>
-                              </Button>
                      </children>
                   </HBox>
-               </children>
-            </HBox>
-            </children>
-        </VBox>
-    </children>
-</AnchorPane>
+                  </children>
+              </VBox>
+          </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleUndo" text="Undo | ctrl+z" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleRedo" text="Redo | ctrl+y" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
