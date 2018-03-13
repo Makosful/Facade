@@ -14,6 +14,7 @@ $goodButton: #74882b;
 }
 
 .button {
+    -fx-padding: 10px;
     -fx-text-fill: $textColor;
     -fx-background-color: $button;
     &:hover {
@@ -47,6 +48,8 @@ $goodButton: #74882b;
 
 .text-field {
     -fx-background-color: darken($textColor, 20%);
+    -fx-padding: 10px;
+    -fx-prompt-text-fill: darken($textColor, 50%);
 }
 
 .menu-bar{
