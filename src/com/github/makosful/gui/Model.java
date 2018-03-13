@@ -3,6 +3,7 @@ package com.github.makosful.gui;
 import com.github.makosful.bll.BLLException;
 import com.github.makosful.bll.BLLManager;
 import com.github.makosful.bll.IBLL;
+import com.github.makosful.stage.utils.StageManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Stack;
@@ -29,6 +30,7 @@ public class Model
 
     // Objects
     private final IBLL bll;
+    private StageManager sm;
 
     // Data
     private final ObservableList<String> logList;
@@ -73,6 +75,11 @@ public class Model
         logList.add(message);
         saveMessages();
         //undoStack.push(message);
+    }
+
+    public void setStageManager(StageManager sm)
+    {
+        this.sm = sm;
     }
 
     private void saveMessages()
