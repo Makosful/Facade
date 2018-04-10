@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
  *
  * @author Storm
  */
-public class CollaboratorsController implements Initializable {
+public class Login implements Initializable {
 
     @FXML
     private Button btnLogin;
@@ -38,6 +38,7 @@ public class CollaboratorsController implements Initializable {
 
     @FXML
     private void clickLogin(ActionEvent event) {
+
     }
 
 }
