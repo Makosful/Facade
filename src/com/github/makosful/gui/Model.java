@@ -3,6 +3,8 @@ package com.github.makosful.gui;
 import com.github.makosful.bll.BLLException;
 import com.github.makosful.bll.BLLManager;
 import com.github.makosful.bll.IBLL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,12 +15,14 @@ import javafx.collections.ObservableList;
  *
  * @author Axl
  */
-public class Model {
+public class Model
+{
 
     //<editor-fold defaultstate="collapsed" desc="Singleton">
     private static final Model INSTANCE = new Model();
 
-    public static Model getInstance() {
+    public static Model getInstance()
+    {
         return INSTANCE;
     }
     //</editor-fold>
@@ -37,7 +41,8 @@ public class Model {
     /**
      * Singleton Constructor
      */
-    private Model() {
+    private Model()
+    {
         bll = new BLLManager();
         logList = FXCollections.observableArrayList();
 
@@ -51,7 +56,8 @@ public class Model {
      *
      * @return Returns an Observable List of Strings with the messages
      */
-    public ObservableList<String> getLogList() {
+    public ObservableList<String> getLogList()
+    {
         return this.logList;
     }
 
@@ -60,63 +66,85 @@ public class Model {
      *
      * @param message The message to save
      */
-    public void fxmlSend(String message) {
+    public void fxmlSend(String message)
+    {
+        ArrayList<String> prev = new ArrayList(logList);
+        undoStack.push(prev);
         logList.add(message);
         saveMessages();
-        undoStack.push(message);
+        //undoStack.push(message);
     }
 
-    private void saveMessages() {
-        try {
+    private void saveMessages()
+    {
+        try
+        {
             bll.saveMessages(logList, filePath);
-        } catch (BLLException ex) {
+        }
+        catch (BLLException ex)
+        {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void fxmlDelete(String selectedItem) {
-        logList.remove(selectedItem);
+    public void fxmlDelete(String message)
+    {
+        ArrayList<String> prev = new ArrayList<>(logList);
+        undoStack.push(prev);
+        logList.remove(message);
         saveMessages();
     }
 
-    public void fxmlDeleteAll() {
+    public void fxmlDeleteAll()
+    {
         DeletedStack.addAll(logList);
-
         logList.clear();
         saveMessages();
     }
 
-    private void loadLogs(String file) {
-        try {
+    private void loadLogs(String file)
+    {
+        try
+        {
             logList.setAll(bll.loadLog(file));
-        } catch (BLLException ex) {
+        }
+        catch (BLLException ex)
+        {
             System.out.println(ex);
         }
     }
 
-    public void undoChange() {
-        if (undoStack.empty()) {
+    public void undoChange()
+    {
+        if (undoStack.empty())
+        {
+            System.out.println("Not undoing");
             return;
-        } else {
-            redoStack.add(undoStack.peek());
-            logList.remove(undoStack.peek());
-            undoStack.pop();
-
-            saveMessages();
         }
+        System.out.println("Undo");
 
+        ArrayList temp = new ArrayList(logList);
+        redoStack.add(temp);
+        logList.setAll((Collection<? extends String>) undoStack.peek());
+        undoStack.pop();
+
+        saveMessages();
     }
 
-    public void redoChange() {
-        if (redoStack.empty()) {
+    public void redoChange()
+    {
+        if (redoStack.empty())
+        {
+            System.out.println("not redoing");
             return;
-        } else {
-            undoStack.add(redoStack.peek());
-
-            logList.add(redoStack.peek().toString());
-
-            redoStack.pop();
-            saveMessages();
         }
+        System.out.println("Redo");
+
+        ArrayList temp = new ArrayList(logList);
+        undoStack.add(redoStack.peek());
+        logList.setAll((Collection<? extends String>) redoStack.peek());
+        redoStack.pop();
+
+        saveMessages();
     }
 }
