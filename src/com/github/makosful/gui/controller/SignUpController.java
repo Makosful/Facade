@@ -1,5 +1,7 @@
 package com.github.makosful.gui.controller;
 
+import com.github.makosful.be.Scenes;
+import com.github.makosful.gui.Model;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +18,8 @@ import javafx.scene.control.TextField;
  */
 public class SignUpController implements Initializable
 {
+
+    private Model model;
 
     @FXML
     private Button btnCancel;
@@ -39,17 +43,19 @@ public class SignUpController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        model = Model.getInstance();
     }
 
     @FXML
     private void handleCancel(ActionEvent event)
     {
+        model.changeScene(Scenes.LOGIN);
     }
 
     @FXML
     private void handleCreate(ActionEvent event)
     {
+        model.changeScene(Scenes.CHAT);
     }
 
 }

@@ -53,6 +53,11 @@ public class Model
         loadLogs(filePath);
     }
 
+    public void changeScene(int i)
+    {
+        sm.setActiveScene(i);
+    }
+
     /**
      * Gets the log of messages
      *
@@ -75,6 +80,11 @@ public class Model
         logList.add(message);
         saveMessages();
         //undoStack.push(message);
+    }
+
+    public StageManager getStageManager()
+    {
+        return this.sm;
     }
 
     public void setStageManager(StageManager sm)

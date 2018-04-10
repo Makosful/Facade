@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane id="root" fx:id="bdpRoot" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
+<BorderPane id="root" fx:id="bdpRoot" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.makosful.gui.controller.LogController">
     <center>
         <AnchorPane stylesheets="@../css/style.css">
             <padding>
@@ -70,6 +70,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open" />
                         <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
                         <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleLogOut" text="Log out" />
                         <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
                     </items>
                 </Menu>

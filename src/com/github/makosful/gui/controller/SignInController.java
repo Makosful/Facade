@@ -1,5 +1,7 @@
 package com.github.makosful.gui.controller;
 
+import com.github.makosful.be.Scenes;
+import com.github.makosful.gui.Model;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +18,8 @@ import javafx.scene.control.TextField;
  */
 public class SignInController implements Initializable
 {
+
+    private Model model;
 
     @FXML
     private Button bntLogin;
@@ -37,22 +41,28 @@ public class SignInController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        model = Model.getInstance();
     }
 
     @FXML
     private void handleCreate(ActionEvent event)
     {
+        model.changeScene(Scenes.SIGN_UP);
     }
 
     @FXML
     private void handleLogin(ActionEvent event)
     {
+        /*
+         * Impliment validation check
+         */
+        model.changeScene(Scenes.CHAT);
     }
 
     @FXML
     private void handleQuit(ActionEvent event)
     {
+        model.getStageManager().getStage().close();
     }
 
 }

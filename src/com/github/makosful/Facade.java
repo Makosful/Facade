@@ -1,5 +1,6 @@
 package com.github.makosful;
 
+import com.github.makosful.be.Scenes;
 import com.github.makosful.gui.Model;
 import com.github.makosful.stage.entities.Docking;
 import com.github.makosful.stage.exception.SceneIdAlreadyTakenException;
@@ -38,21 +39,26 @@ public class Facade extends Application
         registerScenes(sm);
 
         stage.show();
-        sm.getPlacementUtil().alignStage(stage, Docking.CENTER);
+        sm.getPlacementUtil().setAlignment(Docking.CENTER);
+        sm.getPlacementUtil().setAutoAlign(true);
+        sm.getPlacementUtil().autoAlign();
     }
 
     private void registerScenes(StageManager sm)
     {
         try
         {
-            sm.registerScene(1, "Login",
+            sm.registerScene(Scenes.LOGIN,
+                             "Login",
                              getClass().getResource("gui/view/SignIn.fxml"));
-            sm.registerScene(2, "Sign Up",
-                             getClass().getResource("gui/view/SignIn.fxml"));
-            sm.registerScene(3, "Chat",
-                             getClass().getResource("gui/view/SignIn.fxml"));
+            sm.registerScene(Scenes.SIGN_UP,
+                             "Sign Up",
+                             getClass().getResource("gui/view/SignUp.fxml"));
+            sm.registerScene(Scenes.CHAT,
+                             "Chat",
+                             getClass().getResource("gui/view/Log.fxml"));
 
-            sm.setActiveScene(1);
+            sm.setActiveScene(Scenes.LOGIN);
         }
         catch (SceneIdAlreadyTakenException | IOException ex)
         {

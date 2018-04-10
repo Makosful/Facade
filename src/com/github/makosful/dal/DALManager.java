@@ -14,6 +14,13 @@ import javafx.collections.ObservableList;
 public class DALManager implements IDAL
 {
 
+    private DatabaseConnector db;
+
+    public DALManager()
+    {
+        db = new DatabaseConnector();
+    }
+
     /**
      *
      * @param file

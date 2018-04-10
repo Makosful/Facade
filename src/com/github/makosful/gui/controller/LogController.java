@@ -1,5 +1,6 @@
 package com.github.makosful.gui.controller;
 
+import com.github.makosful.be.Scenes;
 import com.github.makosful.gui.Model;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,6 +50,12 @@ public class LogController implements Initializable
 
         lstLog.setItems(model.getLogList());
         setupKeyCombinations();
+    }
+
+    @FXML
+    private void handleLogOut(ActionEvent event)
+    {
+        model.changeScene(Scenes.LOGIN);
     }
 
     @FXML
@@ -129,7 +136,6 @@ public class LogController implements Initializable
         txtMessage.clear();
     }
 
-    @FXML
     private void sendMsg(ActionEvent event)
     {
         handleSend(event);
